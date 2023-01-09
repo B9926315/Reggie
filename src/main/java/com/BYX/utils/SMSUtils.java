@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Value;
  */
 @Slf4j
 public class SMSUtils {
-	private static final String accessKeyId="LTAI5tHaxArL7CaY5Q7QxH3v";
-	private static final String secret="B8wlAPPCTfJijXLECDaSR07kkvXvAA";
+	private static final String accessKeyId="";
+	private static final String secret="";
 	/**
 	 * 发送短信
 	 * @param signName 签名
