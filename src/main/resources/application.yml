@@ -31,6 +31,3 @@ mybatis-plus:
       id-type: ASSIGN_ID
 reggie:
   path: D:\1临时文件\Riggie\img\
-aliyun:
-  accessKeyId: LTAI5tHaxArL7CaY5Q7QxH3v
-  secret: B8wlAPPCTfJijXLECDaSR07kkvXvAA
