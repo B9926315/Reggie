@@ -18,7 +18,6 @@ import java.util.List;
 public class OrdersController {
     @Autowired
     private OrdersService ordersService;
-
     /**
      * 生成订单
      */
@@ -27,7 +26,6 @@ public class OrdersController {
         ordersService.submit(orders);
         return R.success("下单成功");
     }
-
     /**
      * 分页查询订单数据
      */
