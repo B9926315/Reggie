@@ -12,12 +12,16 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.4.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <properties>
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
+<!--Redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 <!--阿里云短信服务-->
         <dependency>
             <groupId>com.aliyun</groupId>
@@ -33,7 +37,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
+<!--SpringBoot测试类-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -45,7 +49,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <scope>compile</scope>
         </dependency>
-
+<!--mybatis-plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
@@ -57,7 +61,7 @@
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
         </dependency>
-
+<!--阿里巴巴fastjson-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -83,7 +87,6 @@
         </dependency>
 
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
