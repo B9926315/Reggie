@@ -11,6 +11,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sun.jmx.snmp.SnmpUnknownModelLcdException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +32,7 @@ public class SetmealController {
     @Autowired
     private CategoryService categoryService;
     @PostMapping
+    @CacheEvict(value = "setmeal",allEntries = true) //清理所有缓存数据
     public R<String> save(@RequestBody SetmealDto setmealDto){
         setmealService.saveWithDish(setmealDto);
         return R.success("新增套餐成功");
@@ -71,6 +74,7 @@ public class SetmealController {
      * @param ids 被删除的套餐ID集合
      */
     @DeleteMapping
+    @CacheEvict(value = "setmeal",allEntries = true) //清理所有缓存数据
     public R<String> delete(@RequestParam List<Long> ids){
         setmealService.deleteWithDish(ids);
         return R.success("套餐删除成功");
@@ -82,6 +86,7 @@ public class SetmealController {
      * @param ids 套餐ID集合
      */
     @PostMapping("/status/{status}")
+    @CacheEvict(value = "setmeal",allEntries = true) //清理所有缓存数据
     public R<String> updateStatus(@PathVariable Integer status,@RequestParam List<Long> ids){
         LambdaUpdateWrapper<Setmeal> updateWrapper=new LambdaUpdateWrapper<>();
         updateWrapper.in(Setmeal::getId,ids);
@@ -96,6 +101,7 @@ public class SetmealController {
      * @return
      */
     @GetMapping("/list")
+    @Cacheable(value = "setmealCache",key = "#setmeal.categoryId+'_'+#setmeal.status")
     public R<List<Setmeal>> list(Setmeal setmeal){
         LambdaQueryWrapper<Setmeal> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(setmeal.getCategoryId() != null,Setmeal::getCategoryId,setmeal.getCategoryId());

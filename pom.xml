@@ -16,7 +16,13 @@
     <properties>
         <java.version>1.8</java.version>
     </properties>
+<!--项目所需的依赖-->
     <dependencies>
+<!--使用SpringBoot缓存技术-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
 <!--Redis-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
