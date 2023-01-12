@@ -13,7 +13,7 @@ spring:
   redis:
     host: localhost
     port: 6379
-    password: xuan
+    password:
     database: 0
     jedis:
       pool:

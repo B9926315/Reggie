@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sun.jmx.snmp.SnmpUnknownModelLcdException;
+import io.swagger.annotations.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -24,6 +25,8 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/setmeal")
+//文档说明
+@Api(tags = "套餐接口")
 public class SetmealController {
     @Autowired
     private SetmealService setmealService;
@@ -31,7 +34,9 @@ public class SetmealController {
     private SetmealDishService setmealDishService;
     @Autowired
     private CategoryService categoryService;
+
     @PostMapping
+    @ApiOperation(value = "新增套餐接口")
     @CacheEvict(value = "setmeal",allEntries = true) //清理所有缓存数据
     public R<String> save(@RequestBody SetmealDto setmealDto){
         setmealService.saveWithDish(setmealDto);
@@ -45,6 +50,12 @@ public class SetmealController {
      * @param name 查询关键字
      */
     @GetMapping("/page")
+    @ApiOperation("分页展示套餐接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "page",value = "当前页码",readOnly = true),
+            @ApiImplicitParam(name = "pageSize",value = "每页记录数",readOnly = true),
+            @ApiImplicitParam(name = "name",value = "套餐名称",readOnly = false),
+    })
     public R<Page> page(int page,int pageSize,String name){
         Page<Setmeal> pageInfo=new Page<>(page,pageSize);
         Page<SetmealDto> dtoPage=new Page<>();

@@ -18,6 +18,12 @@
     </properties>
 <!--项目所需的依赖-->
     <dependencies>
+<!--Swagger-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>3.0.2</version>
+        </dependency>
 <!--使用SpringBoot缓存技术-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
